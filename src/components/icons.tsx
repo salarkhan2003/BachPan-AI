@@ -31,7 +31,10 @@ import {
   Lightbulb,
   Smile,
   CircleHelp,
-  ChevronRight
+  ChevronRight,
+  Menu, // Added
+  PanelLeftOpen, // Added
+  PanelLeftClose, // Added
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -69,6 +72,9 @@ export const Icons = {
   communityHeart: HeartHandshake,
   help: CircleHelp,
   chevronRight: ChevronRight,
+  menu: Menu, // Added
+  panelLeftOpen: PanelLeftOpen, // Added
+  panelLeftClose: PanelLeftClose, // Added
 };
 
 export type IconName = keyof typeof Icons;

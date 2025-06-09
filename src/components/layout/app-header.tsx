@@ -7,6 +7,7 @@ import { Icons, PulseCareLogo } from '@/components/icons';
 import { useConnectivity } from '@/contexts/connectivity-context';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
+import { useSidebar } from '@/components/ui/sidebar'; // Import useSidebar
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,19 +17,35 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export function AppHeader({ onToggleSidebar }: { onToggleSidebar: () => void }) {
+export function AppHeader() {
   const { isOnline, setIsOnline } = useConnectivity();
+  const { toggleSidebar, open: isSidebarOpen, isMobile, openMobile: isMobileSidebarOpen } = useSidebar(); // Use the sidebar hook
+
+  let ToggleIcon = Icons.menu;
+  let toggleAriaLabel = "Open menu";
+
+  if (isMobile) {
+    ToggleIcon = Icons.menu;
+    toggleAriaLabel = isMobileSidebarOpen ? "Close menu" : "Open menu";
+  } else { // Desktop
+    if (isSidebarOpen) { // Sidebar is expanded
+      ToggleIcon = Icons.panelLeftOpen; // Icon to suggest collapsing
+      toggleAriaLabel = "Collapse sidebar";
+    } else { // Sidebar is collapsed (icon mode)
+      ToggleIcon = Icons.panelLeftClose; // Icon to suggest expanding
+      toggleAriaLabel = "Expand sidebar";
+    }
+  }
 
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-md sm:px-6">
       <Button
         variant="ghost"
         size="icon"
-        onClick={onToggleSidebar}
-        className="md:hidden"
-        aria-label="Toggle sidebar"
+        onClick={toggleSidebar} // Use toggleSidebar from the hook
+        aria-label={toggleAriaLabel} // Dynamic aria-label
       >
-        <Icons.home className="h-5 w-5" /> {/* Using home as a placeholder for menu icon */}
+        <ToggleIcon className="h-5 w-5" />
       </Button>
 
       <div className="flex items-center gap-2">
