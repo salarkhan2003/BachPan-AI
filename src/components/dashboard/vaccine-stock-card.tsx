@@ -1,5 +1,7 @@
+
 "use client";
 
+import { useState, useEffect } from 'react'; // Added useState and useEffect
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Icons } from "@/components/icons";
 import { mockVaccineStock } from "@/lib/mock-data";
@@ -10,13 +12,40 @@ import { useConnectivity } from "@/contexts/connectivity-context";
 
 export function VaccineStockCard() {
   const { isOnline } = useConnectivity();
-  const dataToShow = isOnline ? mockVaccineStock : mockVaccineStock.slice(0,2).map(v => ({...v, availability: "Low Stock" as const, lastUpdated: "Offline data (may be outdated)"}));
+  
+  const dataToShow = isOnline 
+    ? mockVaccineStock 
+    : mockVaccineStock.slice(0,2).map(v => ({
+        ...v, 
+        availability: "Low Stock" as const, 
+        lastUpdated: "Offline data (may be outdated)" 
+      }));
+
+  const [formattedTimes, setFormattedTimes] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    if (isOnline) {
+      const newFormattedTimes: Record<string, string> = {};
+      // Iterate over the source mockVaccineStock for online data
+      mockVaccineStock.forEach(vaccine => {
+        try {
+          // Ensure vaccine.lastUpdated is a valid date string before parsing
+          newFormattedTimes[vaccine.id] = new Date(vaccine.lastUpdated).toLocaleTimeString();
+        } catch (e) {
+          console.error("Error formatting date for vaccine:", vaccine.id, vaccine.lastUpdated, e);
+          newFormattedTimes[vaccine.id] = "Invalid date"; // Fallback for invalid date
+        }
+      });
+      setFormattedTimes(newFormattedTimes);
+    }
+    // No need to explicitly clear/set for offline as `dataToShow` handles the offline display string
+  }, [isOnline]); // Rerun when isOnline changes (and on initial client mount)
 
 
   const getBadgeVariant = (availability: VaccineStock['availability']) => {
     switch (availability) {
-      case 'In Stock': return 'default'; // Default is primary
-      case 'Low Stock': return 'secondary'; // Secondary might be better if primary is blue
+      case 'In Stock': return 'default'; 
+      case 'Low Stock': return 'secondary'; 
       case 'Out of Stock': return 'destructive';
       default: return 'outline';
     }
@@ -44,7 +73,10 @@ export function VaccineStockCard() {
                 <div>
                   <p className="font-medium text-sm">{vaccine.name}</p>
                   <p className="text-xs text-muted-foreground">
-                    {isOnline ? `Last updated: ${new Date(vaccine.lastUpdated).toLocaleTimeString()}` : vaccine.lastUpdated}
+                    {isOnline 
+                      ? `Last updated: ${formattedTimes[vaccine.id] || "Loading..."}` 
+                      : vaccine.lastUpdated /* This is already "Offline data (may be outdated)" */
+                    }
                   </p>
                 </div>
                 <Badge variant={getBadgeVariant(vaccine.availability)} className="text-xs">
@@ -58,3 +90,4 @@ export function VaccineStockCard() {
     </Card>
   );
 }
+
