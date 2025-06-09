@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -46,7 +47,7 @@ export function AppSidebar() {
         <SidebarMenu className="mt-2">
           {mainNavItems.map((item) => (
             <SidebarMenuItem key={item.href}>
-              <Link href={item.href} legacyBehavior passHref>
+              <Link href={item.href}>
                 <SidebarMenuButton
                   isActive={pathname === item.href || (item.href !== "/dashboard" && pathname.startsWith(item.href))}
                   tooltip={item.title}
@@ -65,7 +66,7 @@ export function AppSidebar() {
         <SidebarMenu>
           {secondaryNavItems.map((item) => (
              <SidebarMenuItem key={item.href}>
-               <Link href={item.href} legacyBehavior passHref>
+               <Link href={item.href}>
                 <SidebarMenuButton
                   isActive={pathname.startsWith(item.href)}
                   tooltip={item.title}
