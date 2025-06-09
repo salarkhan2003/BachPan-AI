@@ -30,7 +30,8 @@ import {
   ListChecks,
   Lightbulb,
   Smile,
-  CircleHelp
+  CircleHelp,
+  ChevronRight
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -67,6 +68,7 @@ export const Icons = {
   listChecks: ListChecks,
   communityHeart: HeartHandshake,
   help: CircleHelp,
+  chevronRight: ChevronRight,
 };
 
 export type IconName = keyof typeof Icons;
