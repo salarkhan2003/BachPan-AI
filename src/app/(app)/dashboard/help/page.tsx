@@ -52,7 +52,7 @@ export default function HelpPage() {
           <CardDescription>If you need further assistance, please reach out.</CardDescription>
         </CardHeader>
         <CardContent>
-          <p>For support, please email us at: <a href="mailto:support@pulsecare.ai" className="text-primary hover:underline">support@pulsecare.ai</a></p>
+          <p>For support, please email us at: <a href="mailto:psalarkhan22@gmail.com" className="text-primary hover:underline">psalarkhan22@gmail.com</a></p>
           <p className="mt-2">Our team will get back to you as soon as possible.</p>
         </CardContent>
       </Card>
