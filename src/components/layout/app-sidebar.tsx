@@ -13,16 +13,17 @@ import {
   SidebarMenuButton,
   SidebarSeparator,
 } from '@/components/ui/sidebar';
-import { Icons, PulseCareLogo } from '@/components/icons';
+import { Icons, BachpanAiLogo } from '@/components/icons'; // Changed PulseCareLogo to BachpanAiLogo
 import type { NavItem } from '@/lib/types';
 
 const mainNavItems: NavItem[] = [
   { title: 'Dashboard', href: '/dashboard', icon: Icons.home },
-  { title: 'Voice Triage', href: '/dashboard/voice-triage', icon: Icons.voiceTriage },
-  { title: 'Rash Scanner', href: '/dashboard/rash-scanner', icon: Icons.rashScanner },
-  { title: 'Emergency', href: '/dashboard/emergency', icon: Icons.emergency },
+  { title: 'Smart Vision Monitor', href: '/dashboard/smart-vision', icon: Icons.rashScanner }, // Icon can be updated later
+  { title: 'Cry Analyzer', href: '/dashboard/cry-analyzer', icon: Icons.voiceTriage }, // Icon can be updated later
+  { title: 'AI Pediatric Advisor', href: '/dashboard/ai-advisor', icon: Icons.messages },
+  { title: 'Growth & Vitals', href: '/dashboard/growth-vitals', icon: Icons.realTime }, // Renamed Health Alerts
   { title: 'Community Tips', href: '/dashboard/community-tips', icon: Icons.community },
-  { title: 'Health Alerts', href: '/dashboard/health-alerts', icon: Icons.alerts },
+  { title: 'Emergency Protocol', href: '/dashboard/emergency', icon: Icons.emergency },
 ];
 
 const secondaryNavItems: NavItem[] = [
@@ -37,9 +38,9 @@ export function AppSidebar() {
     <Sidebar collapsible="icon" variant="sidebar" side="left">
       <SidebarHeader className="border-b">
         <Link href="/dashboard" className="flex items-center gap-2 p-2">
-          <PulseCareLogo className="h-8 w-8 text-primary group-data-[collapsible=icon]:mx-auto" />
+          <BachpanAiLogo className="h-8 w-8 text-primary group-data-[collapsible=icon]:mx-auto" /> {/* Changed PulseCareLogo */}
           <span className="text-lg font-semibold font-headline text-foreground group-data-[collapsible=icon]:hidden">
-            PulseCare AI
+            BachpanAI {/* Changed from PulseCare AI */}
           </span>
         </Link>
       </SidebarHeader>

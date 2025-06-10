@@ -32,21 +32,21 @@ import {
   Smile,
   CircleHelp,
   ChevronRight,
-  Menu, // Added
-  PanelLeftOpen, // Added
-  PanelLeftClose, // Added
+  Menu,
+  PanelLeftOpen,
+  PanelLeftClose,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 export const Icons = {
   home: Home,
-  voiceTriage: Mic,
-  rashScanner: ScanSearch,
+  voiceTriage: Mic, // Will be reused for Cry Analyzer
+  rashScanner: ScanSearch, // Will be reused for Smart Vision
   emergency: ShieldAlert,
-  realTime: Activity,
+  realTime: Activity, // Reused for Growth & Vitals
   community: Users,
-  alerts: Bell,
-  messages: MessageSquare,
+  alerts: Bell, // Can be repurposed or kept if general alerts are needed
+  messages: MessageSquare, // For AI Pediatric Advisor
   online: Cloud,
   offline: CloudOff,
   vaccine: Syringe,
@@ -72,16 +72,16 @@ export const Icons = {
   communityHeart: HeartHandshake,
   help: CircleHelp,
   chevronRight: ChevronRight,
-  menu: Menu, // Added
-  panelLeftOpen: PanelLeftOpen, // Added
-  panelLeftClose: PanelLeftClose, // Added
+  menu: Menu,
+  panelLeftOpen: PanelLeftOpen,
+  panelLeftClose: PanelLeftClose,
 };
 
 export type IconName = keyof typeof Icons;
 export const getIcon = (name: IconName): LucideIcon => Icons[name] || Info;
 
-// PulseCare AI Logo SVG (Simple Placeholder)
-export const PulseCareLogo = (props: React.SVGProps<SVGSVGElement>) => (
+// BachpanAI Logo SVG (Simple Placeholder)
+export const BachpanAiLogo = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -93,8 +93,12 @@ export const PulseCareLogo = (props: React.SVGProps<SVGSVGElement>) => (
     aria-hidden="true"
     {...props}
   >
-    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-    <path d="M3.22 12H3a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1" />
-    <path d="m16.5 3-1.5 4-2-4-2 4-1.5-4" />
+    <rect x="3" y="3" width="18" height="18" rx="3" ry="3" stroke="currentColor" fill="hsl(var(--primary))" strokeWidth="1.5"></rect>
+    <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fontSize="11" fontWeight="bold" fill="hsl(var(--primary-foreground))" fontFamily="Space Grotesk, sans-serif">
+      B
+    </text>
+    <text x="65%" y="70%" dominantBaseline="middle" textAnchor="middle" fontSize="5" fontWeight="normal" fill="hsl(var(--primary-foreground))" fontFamily="Inter, sans-serif">
+      ai
+    </text>
   </svg>
 );

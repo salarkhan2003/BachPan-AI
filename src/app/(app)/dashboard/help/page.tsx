@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Icons } from "@/components/icons";
@@ -12,32 +13,38 @@ export default function HelpPage() {
             <Icons.help className="h-6 w-6 text-primary" />
             Frequently Asked Questions
           </CardTitle>
-          <CardDescription>Find answers to common questions about PulseCare AI.</CardDescription>
+          <CardDescription>Find answers to common questions about BachpanAI.</CardDescription>
         </CardHeader>
         <CardContent>
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger>How does Voice Triage work?</AccordionTrigger>
+              <AccordionTrigger>How does the Cry Analyzer work?</AccordionTrigger>
               <AccordionContent>
-                Voice Triage allows you to describe your baby's symptoms. Our AI analyzes this information and provides potential causes and recommended actions. This feature is for informational purposes and not a substitute for professional medical advice.
+                The Cry Analyzer (simulated via text input for this prototype) allows you to describe your baby's cry. Our AI analyzes this information and suggests potential meanings and actions. This feature is for informational purposes and not a substitute for professional medical advice.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
-              <AccordionTrigger>Is the Rash Scanner accurate?</AccordionTrigger>
+              <AccordionTrigger>Is the Smart Vision Monitor accurate?</AccordionTrigger>
               <AccordionContent>
-                The Rash Scanner uses AI to identify possible skin conditions based on an uploaded image. While it can provide helpful insights, it's essential to consult a pediatrician for an accurate diagnosis and treatment plan.
+                The Smart Vision Monitor (using image uploads in this prototype) uses AI to identify baby's posture and potential safety concerns from an image. While it can provide helpful insights, it's essential to always ensure a safe environment and consult a pediatrician for any health concerns.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-3">
+             <AccordionItem value="item-3">
+              <AccordionTrigger>How does the AI Pediatric Advisor work?</AccordionTrigger>
+              <AccordionContent>
+                The AI Pediatric Advisor is an LLM-powered chatbot where you can ask questions about baby care, feeding, sleep, and common ailments. It provides general guidance and information. Always consult a doctor for medical diagnosis and treatment.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-4">
               <AccordionTrigger>How do I submit a Community Tip?</AccordionTrigger>
               <AccordionContent>
                 Navigate to the Community Tips section and use the "Share a Community Tip" form. Your tip will be reviewed and categorized to help other parents.
               </AccordionContent>
             </AccordionItem>
-             <AccordionItem value="item-4">
+             <AccordionItem value="item-5">
               <AccordionTrigger>What if I'm offline?</AccordionTrigger>
               <AccordionContent>
-                PulseCare AI offers hybrid functionality. Some features like AI analysis require an internet connection. However, you can still access cached information like verified community tips, emergency protocols, and basic health data.
+                BachpanAI offers hybrid functionality. Some features like AI analysis require an internet connection. However, you can still access cached information like verified community tips, emergency protocols, and basic health data.
               </AccordionContent>
             </AccordionItem>
           </Accordion>

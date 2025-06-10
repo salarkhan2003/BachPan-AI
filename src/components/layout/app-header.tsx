@@ -1,13 +1,14 @@
+
 "use client";
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Icons, PulseCareLogo } from '@/components/icons';
+import { Icons, BachpanAiLogo } from '@/components/icons'; // Changed PulseCareLogo to BachpanAiLogo
 import { useConnectivity } from '@/contexts/connectivity-context';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
-import { useSidebar } from '@/components/ui/sidebar'; // Import useSidebar
+import { useSidebar } from '@/components/ui/sidebar';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,7 +20,7 @@ import {
 
 export function AppHeader() {
   const { isOnline, setIsOnline } = useConnectivity();
-  const { toggleSidebar, open: isSidebarOpen, isMobile, openMobile: isMobileSidebarOpen } = useSidebar(); // Use the sidebar hook
+  const { toggleSidebar, open: isSidebarOpen, isMobile, openMobile: isMobileSidebarOpen } = useSidebar();
 
   let ToggleIcon = Icons.menu;
   let toggleAriaLabel = "Open menu";
@@ -27,12 +28,12 @@ export function AppHeader() {
   if (isMobile) {
     ToggleIcon = Icons.menu;
     toggleAriaLabel = isMobileSidebarOpen ? "Close menu" : "Open menu";
-  } else { // Desktop
-    if (isSidebarOpen) { // Sidebar is expanded
-      ToggleIcon = Icons.panelLeftOpen; // Icon to suggest collapsing
+  } else {
+    if (isSidebarOpen) {
+      ToggleIcon = Icons.panelLeftOpen;
       toggleAriaLabel = "Collapse sidebar";
-    } else { // Sidebar is collapsed (icon mode)
-      ToggleIcon = Icons.panelLeftClose; // Icon to suggest expanding
+    } else {
+      ToggleIcon = Icons.panelLeftClose;
       toggleAriaLabel = "Expand sidebar";
     }
   }
@@ -42,16 +43,16 @@ export function AppHeader() {
       <Button
         variant="ghost"
         size="icon"
-        onClick={toggleSidebar} // Use toggleSidebar from the hook
-        aria-label={toggleAriaLabel} // Dynamic aria-label
+        onClick={toggleSidebar}
+        aria-label={toggleAriaLabel}
       >
         <ToggleIcon className="h-5 w-5" />
       </Button>
 
       <div className="flex items-center gap-2">
-        <PulseCareLogo className="h-8 w-8 text-primary" />
+        <BachpanAiLogo className="h-8 w-8 text-primary" /> {/* Changed PulseCareLogo to BachpanAiLogo */}
         <Link href="/dashboard" className="text-xl font-bold font-headline text-foreground">
-          PulseCare AI
+          BachpanAI {/* Changed from PulseCare AI */}
         </Link>
       </div>
 
@@ -74,7 +75,7 @@ export function AppHeader() {
             <Button variant="ghost" size="icon" className="rounded-full">
               <Avatar className="h-8 w-8">
                 <AvatarImage src="https://placehold.co/40x40.png" alt="User Avatar" data-ai-hint="user avatar" />
-                <AvatarFallback>PA</AvatarFallback>
+                <AvatarFallback>BA</AvatarFallback> {/* Changed from PA */}
               </Avatar>
             </Button>
           </DropdownMenuTrigger>

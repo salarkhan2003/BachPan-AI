@@ -3,11 +3,11 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { ConnectivityProvider } from '@/contexts/connectivity-context';
-import { ThemeProvider } from '@/contexts/theme-context'; // Added ThemeProvider
+import { ThemeProvider } from '@/contexts/theme-context';
 
 export const metadata: Metadata = {
-  title: 'PulseCare AI',
-  description: 'Intelligent hybrid-mode baby care companion',
+  title: 'BachpanAI - Baby Care Companion',
+  description: 'AI-Powered Baby Care Companion for Indian Parents',
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning={true}>{/* Added suppressHydrationWarning for theme changes */}
+    <html lang="en" suppressHydrationWarning={true}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,7 +26,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
-        <ThemeProvider> {/* Wrapped with ThemeProvider */}
+        <ThemeProvider>
           <ConnectivityProvider>
             {children}
             <Toaster />
