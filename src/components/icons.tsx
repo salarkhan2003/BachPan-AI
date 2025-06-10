@@ -1,3 +1,4 @@
+
 import {
   Home,
   Mic,
@@ -80,24 +81,50 @@ export const Icons = {
 export type IconName = keyof typeof Icons;
 export const getIcon = (name: IconName): LucideIcon => Icons[name] || Info;
 
-// BachpanAI Logo SVG (Simple Placeholder)
+// BachpanAI Logo SVG (Updated with Heart Symbol)
 export const BachpanAiLogo = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
+    strokeWidth="1.5" // Default stroke width for elements unless overridden
     strokeLinecap="round"
     strokeLinejoin="round"
     aria-hidden="true"
-    {...props}
+    {...props} // Spread props allows className, style, etc. to be passed
   >
-    <rect x="3" y="3" width="18" height="18" rx="3" ry="3" stroke="currentColor" fill="hsl(var(--primary))" strokeWidth="1.5"></rect>
-    <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fontSize="11" fontWeight="bold" fill="hsl(var(--primary-foreground))" fontFamily="Space Grotesk, sans-serif">
-      B
-    </text>
-    <text x="65%" y="70%" dominantBaseline="middle" textAnchor="middle" fontSize="5" fontWeight="normal" fill="hsl(var(--primary-foreground))" fontFamily="Inter, sans-serif">
+    <rect
+      x="3"
+      y="3"
+      width="18"
+      height="18"
+      rx="3"
+      ry="3"
+      fill="hsl(var(--primary))"   // Fill color of the rectangle
+      stroke="hsl(var(--primary-foreground))" // Border color for the rectangle
+      strokeWidth="1" // Explicit stroke width for the rectangle border
+    />
+
+    {/* Centered Heart Symbol representing Care */}
+    <path
+      // A standard, compact heart path scaled and positioned for this logo
+      d="M12 4.434C10.277 2.985 7.755 2.985 6.032 4.434C4.309 5.883 4.309 8.212 6.032 9.661L12 14.558L17.968 9.661C19.691 8.212 19.691 5.883 17.968 4.434C16.245 2.985 13.723 2.985 12 4.434Z"
+      fill="hsl(var(--primary-foreground))" // Heart color
+      stroke="hsl(var(--primary-foreground))" // Heart border, same as fill for solid appearance
+      strokeWidth="0.5" // Thin stroke for the heart itself
+    />
+
+    {/* "ai" text, positioned bottom-right within the colored box */}
+    <text
+      x="18.5" // Positioned towards the right edge of the inner box area
+      y="18.5" // Positioned towards the bottom edge of the inner box area
+      dominantBaseline="alphabetic" // Aligns bottom of text more predictably
+      textAnchor="end" // Anchors text from its right end
+      fontSize="6"
+      fontWeight="bold"
+      fill="hsl(var(--primary-foreground))"
+      fontFamily="Inter, sans-serif"
+    >
       ai
     </text>
   </svg>
