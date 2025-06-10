@@ -6,7 +6,10 @@ import { Icons } from "@/components/icons";
 export default function HelpPage() {
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-6 font-headline">Help & Support</h1>
+      <div className="flex items-center gap-2 mb-6">
+        <Icons.help className="h-7 w-7 text-primary" /> {/* Icon for Help & Support */}
+        <h1 className="text-3xl font-bold font-headline">Help & Support</h1>
+      </div>
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
