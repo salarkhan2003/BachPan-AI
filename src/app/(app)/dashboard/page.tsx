@@ -1,4 +1,5 @@
 
+import Link from 'next/link'; // Import Link
 import { VoiceTriageCard } from "@/components/dashboard/voice-triage-card"; // Will be CryAnalyzerCard
 import { RashScannerCard } from "@/components/dashboard/rash-scanner-card"; // Will be SmartVisionCard
 import { EmergencyProtocolCard } from "@/components/dashboard/emergency-protocol-card";
@@ -8,7 +9,8 @@ import { HealthAlertsSection } from "@/components/dashboard/health-alerts-sectio
 import { Separator } from "@/components/ui/separator";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Icons } from "@/components/icons";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"; // For new AI Advisor Card
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button"; // Import Button
 
 // TODO: Create these new card components or adapt existing ones.
 // For now, the dashboard will show old cards that will be updated later.
@@ -28,7 +30,7 @@ export default function DashboardPage() {
         {/* These will be updated to CryAnalyzerCard and SmartVisionCard. Placeholder for AI Advisor */}
         <VoiceTriageCard /> {/* To become CryAnalyzerCard */}
         <RashScannerCard /> {/* To become SmartVisionCard */}
-        <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
           <CardHeader>
             <div className="flex items-center gap-2">
               <Icons.messages className="h-6 w-6 text-primary" />
@@ -36,8 +38,14 @@ export default function DashboardPage() {
             </div>
             <CardDescription>Get answers to your baby care questions from our AI assistant.</CardDescription>
           </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground">Ask about feeding, sleep, ailments, and more. Click to open the advisor.</p>
+          <CardContent className="flex-1 flex flex-col justify-between">
+            <p className="text-sm text-muted-foreground mb-4">Ask about feeding, sleep, ailments, and more.</p>
+            <Link href="/dashboard/ai-advisor" passHref className="mt-auto">
+              <Button className="w-full">
+                <Icons.send className="mr-2 h-4 w-4" />
+                Ask About Baby
+              </Button>
+            </Link>
           </CardContent>
         </Card>
 
