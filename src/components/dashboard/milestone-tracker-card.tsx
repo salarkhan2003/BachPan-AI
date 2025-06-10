@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -10,9 +11,11 @@ import { Label } from "@/components/ui/label";
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '../ui/button';
 import { Progress } from '../ui/progress';
+import { useToast } from '@/hooks/use-toast'; // Added useToast
 
 export function MilestoneTrackerCard() {
   const [milestones, setMilestones] = useState<Milestone[]>(mockMilestones);
+  const { toast } = useToast(); // Initialize toast
 
   const toggleMilestone = (id: string) => {
     setMilestones(prev =>
@@ -24,6 +27,13 @@ export function MilestoneTrackerCard() {
   
   const achievedCount = milestones.filter(m => m.achieved).length;
   const progressPercentage = (achievedCount / milestones.length) * 100;
+
+  const handleViewAllMilestones = () => {
+    toast({
+      title: "Feature Coming Soon",
+      description: "Viewing all milestones will be available in a future update.",
+    });
+  };
 
   return (
     <Card className="shadow-md hover:shadow-lg transition-shadow duration-300 h-full">
@@ -71,7 +81,7 @@ export function MilestoneTrackerCard() {
             ))}
           </ul>
         </ScrollArea>
-        <Button variant="outline" size="sm" className="w-full mt-3">
+        <Button variant="outline" size="sm" className="w-full mt-3" onClick={handleViewAllMilestones}>
             <Icons.info className="mr-2 h-4 w-4"/> View All Milestones
         </Button>
       </CardContent>
