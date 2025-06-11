@@ -21,3 +21,9 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+const nextConfig = {
+  output: 'export',
+  trailingSlash: true, // optional but recommended for Firebase Hosting
+}
+
+export default nextConfig
